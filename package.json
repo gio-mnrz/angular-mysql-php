@@ -1,0 +1,24 @@
+{
+  "name": "angular-mysql-php",
+  "description": "Angular example with Angular 1.6.x, Angular-UI-Bootstrap-Bower; Font-Awesome; connecting to a MySql database through PHP.",
+  "keywords" : [
+    "Angular",
+    "Angular 1.6.x",
+    "Angular-UI-Bootstrap-Bower",
+    "Font-Awesome",
+    "MySQL",
+    "PHP",
+    "PHP 5"
+  ],
+  "version": "1.0.0",
+  "main": "index.php",
+  "author": "Geovanni Montero Rodriguez <gio.mnrz@gmail.com>",
+  "dependencies": {},
+  "devDependencies": {
+    "bower": "^1.7.7"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "prestart": "npm install"
+  }
+}

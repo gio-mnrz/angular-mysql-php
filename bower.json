@@ -1,0 +1,13 @@
+{
+  "name": "angular-mysql-php",
+  "description": "Angular example with Angular 1.6.x, Angular-UI-Bootstrap-Bower; Font-Awesome; connecting to a MySql database through PHP.",
+  "version": "1.0.0",
+  "dependencies": {
+    "angular": "1.6.x",
+    "angular-animate": "1.6.x",
+    "angular-ui-bootstrap-bower": "2.5.0",
+    "angular-route": "1.6.x",
+    "bootstrap": "3.3.x",
+    "font-awesome": "fontawesome#^4.7.0"
+  }
+}

@@ -1,0 +1,89 @@
+<!-- actions -->
+<div class="row" >
+    <div class="col-lg-8 col-md-8 col-sm-8 col-sx-12" >
+        <modal-edit
+            controller="ModalEditController"
+            icon-class="fa fa-plus-square-o fa-2x text-primary"
+            selected-mode="add"
+            template-url="components/todo-edit/todo-edit.template.html"
+            todo-obj="null"
+            tooltip-comment="Add item"
+            tooltip-position="bottom"
+            size="md"
+            after-close="$ctrl.loadTodos()"
+            after-dismiss="" ></modal-edit>
+
+        <a href="!#" tooltip-placement="right" uib-tooltip="List items" ng-click="$event.preventDefault(); $ctrl.loadTodos();"><i class="fa fa-list-alt fa-2x text-primary" aria-hidden="true"></i></a>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-sx-12" >
+        <div class="form-group">
+            <label for="order">Order by</label>
+            <select class="form-control" ng-model="$ctrl.orderBy" >
+                <option ng-repeat="option in $ctrl.options" value="{{ option.toLowerCase() }}" >{{ option }}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search for" ng-model="$ctrl.searchFor" />
+        </div>
+    </div>
+</div>
+<!-- /actions -->
+
+<!-- list of elements -->
+<div class="row" >
+    <div class="col-lg-12 col-md-12 col-sm-12 col-sx-12" >
+
+        <table class="table table-condensed table-hover" >
+            <thead>
+                <tr>
+                    <th ng-repeat="column in $ctrl.columns">{{ column }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="todo in filtered = ($ctrl.todos | filter: $ctrl.searchFor | orderBy: $ctrl.orderBy)" >
+                    <td>{{ todo.code }}</td>
+                    <td>{{ todo.goal }}</td>
+                    <td>{{ todo.description }}</td></td>
+                    <td>
+                        <modal-edit
+                            controller="ModalEditController"
+                            icon-class="fa fa-pencil-square-o text-primary"
+                            selected-mode="edit"
+                            template-url="components/todo-edit/todo-edit.template.html"
+                            todo-obj="todo"
+                            tooltip-comment="Edit item"
+                            tooltip-position="left"
+                            size="md"
+                            after-close="$ctrl.loadTodos()"
+                            after-dismiss="" ></modal-edit>
+
+                        &nbsp;&#124;&nbsp;
+                        
+                        <modal-edit
+                            controller="ModalEditController"
+                            icon-class="fa fa-trash-o text-danger"
+                            selected-mode="delete"
+                            template-url="components/todo-edit/todo-edit.template.html"
+                            todo-obj="todo"
+                            tooltip-comment="Delete item"
+                            tooltip-position="top"
+                            size="md"
+                            after-close="$ctrl.loadTodos()"
+                            after-dismiss="" ></modal-edit>
+                    </td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <th colspan="4" class="text-right" >Total: {{ filtered.length }}</th>
+                </tr>
+            </tfoot>
+        </table>
+        
+    </div>
+</div>
+<!-- /list of elements -->

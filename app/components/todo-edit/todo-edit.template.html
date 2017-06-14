@@ -1,0 +1,42 @@
+<form novalidate name="formEdit" >
+    <div class="modal-content">
+        <div class="modal-header" ng-switch="$ctrl.selectedMode">
+            <button type="button" class="close" aria-label="Close" ng-click="$ctrl.cancel()" ><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">
+                <span ng-switch-when="add"><b><span class="text-primary">Add</span> &#60;New Todo&#47;&#62;</b></span>
+                <span ng-switch-when="edit"><b><span class="text-primary">Edit</span> &#60;Code: {{ $ctrl.todoObj.code }}&#47;&#62;</b></span>
+                <span ng-switch-when="delete"><b><span class="text-danger">Delete</span> &#60;Code: {{ $ctrl.todoObj.code }}&#47;&#62;</b></span>
+            </h4>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group"
+                    ng-class="{
+                        'has-error': !formEdit.goal.$valid && (!formEdit.goal.$pristine || formEdit.$submitted),
+                        'has-success': formEdit.goal.$valid && (!formEdit.goal.$pristine || formEdit.$submitted)
+                    }">
+                    <label class="form-control-label">Goal:</label>
+                    <input required type="text" class="form-control" id="goal" name="goal" ng-model="$ctrl.todoObj.goal" />
+                    <small class="help-block" ng-show="formEdit.goal.$error.required && (!formEdit.goal.$pristine || formEdit.$submitted)" >This field is required.</small>
+                </div>
+
+                <div class="form-group"
+                    ng-class="{
+                        'has-error': !formEdit.description.$valid && (!formEdit.description.$pristine || formEdit.$submitted),
+                        'has-success': formEdit.description.$valid && (!formEdit.description.$pristine || formEdit.$submitted)
+                    }">
+                    <label class="form-control-label">Description:</label>
+                    <textarea required class="form-control" id="description" name="description" ng-model="$ctrl.todoObj.description">{{ $ctrl.todoObj.description }}</textarea>
+                    <small class="help-block" ng-show="formEdit.description.$error.required && (!formEdit.description.$pristine || formEdit.$submitted)" >This field is required.</small>
+                </div>
+                <pre>{{ $ctrl.todoObj }}</pre>
+            </form>
+        </div>
+        <div class="modal-footer" ng-switch on="$ctrl.selectedMode">
+            <button type="button" class="btn btn-warning" ng-click="$ctrl.cancel()" ng-switch-when="add|edit|delete" ng-switch-when-separator="|" ><b>Cancel</b></button>
+            <button type="submit" class="btn btn-primary" ng-click="$ctrl.add(formEdit)" ng-switch-when="add" ><b>Add</b></button>
+            <button type="button" class="btn btn-primary" ng-click="$ctrl.edit(formEdit)" ng-switch-when="edit" ><b>Save</b></button>
+            <button type="button" class="btn btn-danger" ng-click="$ctrl.delete()" ng-switch-when="delete" ><b>Delete</b></button>
+        </div>
+    </div>
+</form>

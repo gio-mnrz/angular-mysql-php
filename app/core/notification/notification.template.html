@@ -1,0 +1,5 @@
+<div class="container notification">
+    <div uib-alert ng-repeat="notification in $ctrl.notifications" ng-class="'alert-' + notification.type" close="$ctrl.close($index)" dismiss-on-timeout="{{ notification.timeout }}" class="" >
+        <b>{{ notification.title }}</b> {{ notification.message }}
+    </div>
+</div>

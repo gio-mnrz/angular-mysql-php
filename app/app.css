@@ -1,0 +1,20 @@
+body {
+    padding-top: 75px;
+    padding-bottom: 65px;
+}
+
+.header {
+    background-color: #fbc02d !important;
+}
+
+.footer .navbar-brand,
+.footer .navbar-nav {
+    font-size: 12px !important;
+}
+
+.notification {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 50px;
+}
